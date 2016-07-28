@@ -1,5 +1,7 @@
 <h1><%= @portfolio.name %></h1>
-<h3>$<%= @portfolio.total_value%></h3>
+<%= render 'form' %>
+
+<h3>Total Value: $<%= @portfolio.total_value%></h3>
 <br>
 <%= render partial: 'stocks/stock', collection: @portfolio.stocks %>
 <br>

@@ -22,11 +22,15 @@ class StocksController < ApplicationController
     end
   end
 
+  def edit
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @stock = Stock.find(params[:id])
+  end
+
   def update
     stock = Stock.find(params[:id])
-    stock.amount = params[:amount]
-    stock.update
-    redirect_to portfolio_path(@stock.article)
+    stock.update(amount: params[:stock][:amount])
+    redirect_to portfolio_path(stock[:portfolio_id])
   end
 
   def destroy
@@ -34,7 +38,7 @@ class StocksController < ApplicationController
     if @stock.destroy
       flash[:success] = "'#{@stock.name}' Deleted!"
     else
-      flash[:alert] = "Portfolio not deleted!"
+      flash[:alert] = "stock not deleted!"
     end
     redirect_to portfolio_path(params[:portfolio_id])
   end
@@ -44,5 +48,7 @@ class StocksController < ApplicationController
   def merged_params(hash)
     hash.merge({amount: params[:stock][:amount]})
   end
-
+  def white_listed
+    params.require(:stock).permit(:id, :portfolio_id, :amount)
+  end
 end

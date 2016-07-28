@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'portfolios#index'
   resources :portfolios do
-    resources :stocks, only: [:update, :create, :destroy]
+    resources :stocks, only: [:update, :create, :destroy, :edit]
   end
+  resource :refresher, only: :update
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

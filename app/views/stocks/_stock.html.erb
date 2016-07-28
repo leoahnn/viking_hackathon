@@ -4,10 +4,11 @@
   <span>Amount: <%= stock.amount %></span>
   <span>Price: $<%= stock.price %></span>
   <br>
-  <span>Net Value: $<%= stock.amount*stock.price %></span>
+  <span>Net Value: $<%= total_value(stock) %></span>
   <span>Change: <%= stock.change %>%</span>
   <span>High: <%= stock.high %></span>
   <span>Low: <%= stock.low %></span>
   <br>
+  <%= link_to "edit amount", edit_portfolio_stock_path(portfolio_id: stock[:portfolio_id], id: stock[:id])%> |
   <%= link_to "delete", portfolio_stock_path(portfolio_id: stock[:portfolio_id], id: stock[:id]), method: :delete%>
 </div>

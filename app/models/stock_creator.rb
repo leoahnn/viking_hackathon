@@ -19,5 +19,4 @@ class StockCreator
     p = Portfolio.find(@portfolio_id)
     p.stocks.find_by symbol: @stock
   end
-
 end

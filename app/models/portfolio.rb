@@ -9,4 +9,6 @@ class Portfolio < ActiveRecord::Base
     value.round(2)
   end
 
+  
+
 end

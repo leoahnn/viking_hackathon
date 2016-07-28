@@ -1,17 +1,17 @@
 <h3>Stock</h3>
 <% if @stock %>
-<%= form_for [ @portfolio, @stock ] do |f| %>
-  <p>
-    <%= f.label :symbol, "Symbol"  %>
-<br/>
-    <%= f.text_field :symbol %>
-  </p>
-  <p>
-    <%= f.label :amount, "Number of stock" %><br/>
-    <%= f.text_field :amount %>
-  </p>
-  <p>
-    <%= f.submit 'Submit' %>
-  </p>
-<% end %>
+  <%= form_for [ @portfolio, @stock ] do |f| %>
+    <p>
+      <%= f.label :symbol, "Symbol"  %>
+  <br/>
+      <%= f.text_field :symbol %>
+    </p>
+    <p>
+      <%= f.label :amount, "Number of stock" %><br/>
+      <%= f.text_field :amount %>
+    </p>
+    <p>
+      <%= f.submit 'Submit' %>
+    </p>
+  <% end %>
 <% end %>

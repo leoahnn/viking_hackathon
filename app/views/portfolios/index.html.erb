@@ -1,6 +1,7 @@
 <h1>
     Portfolios
 </h1>
+<% if @portfolios%>
 <ul>
 <% @portfolios.each do |portfolio| %>
     <li>
@@ -10,5 +11,6 @@
     </li>
 <% end %>
 </ul>
+<% end %>
 
 <%= link_to "New Portfolio", new_portfolio_path %>
