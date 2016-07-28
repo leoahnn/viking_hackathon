@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project</title>
+  <title>Stocks</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+  <div class="container">
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "flash #{key}" %>
+  <% end %>
 
-<%= yield %>
-
+  <%= yield %>
+  </div>
 </body>
+  <footer class="footer">
+    <div class="container">
+    <h4>
+      <%= link_to "Index", portfolios_path %>
+    </h4>
+  </div class="container">
+  </footer>
 </html>

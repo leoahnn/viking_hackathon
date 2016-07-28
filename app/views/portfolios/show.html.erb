@@ -1,0 +1,5 @@
+<h1><%= @portfolio.name %></h1>
+
+<%= render partial: 'stocks/stock', collection: @portfolio.stocks %>
+
+<%= link_to "add stock", edit_portfolio_path %>
