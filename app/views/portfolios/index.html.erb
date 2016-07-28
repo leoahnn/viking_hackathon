@@ -1,14 +1,18 @@
 <h1>
-    Portfolios
+    Stocky &#128480;
 </h1>
+
 <% if @portfolios%>
+<h3>&#128176;: $<%=all_portfolio_value%></h3>
+
 <ul>
 <% @portfolios.each do |portfolio| %>
     <li>
-        <%= link_to portfolio.name, portfolio_path(portfolio) %> &nbsp;
-        <span>Net Value: $<%= portfolio.total_value%></span><br>
-        <%= link_to "delete", portfolio_path(portfolio), method: :delete %>
+        <span class="stock"><%= link_to portfolio.name, portfolio_path(portfolio) %></span> &nbsp;
+        <span class="value">=> $<%= portfolio.total_value%></span><br>
+        <span class="delete"><%= link_to "delete", portfolio_path(portfolio), method: :delete, data: {confirm: "Are you sure?"} %></span>
     </li>
+    <hr>
 <% end %>
 </ul>
 <% end %>

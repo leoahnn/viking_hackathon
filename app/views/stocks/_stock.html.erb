@@ -10,5 +10,5 @@
   <span>Low: <%= stock.low %></span>
   <br>
   <%= link_to "edit amount", edit_portfolio_stock_path(portfolio_id: stock[:portfolio_id], id: stock[:id])%> |
-  <%= link_to "delete", portfolio_stock_path(portfolio_id: stock[:portfolio_id], id: stock[:id]), method: :delete%>
+  <span class="delete"><%= link_to "delete", portfolio_stock_path(portfolio_id: stock[:portfolio_id], id: stock[:id]), method: :delete, data: {confirm: "Are you sure?"}%></span>
 </div>
