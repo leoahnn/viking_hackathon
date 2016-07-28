@@ -32,7 +32,7 @@ class PortfoliosController < ApplicationController
   def update
     @portfolio = Portfolio.find(params[:id])
     if @portfolio.update(portfolio_params)
-      flash[:success] = "Portfolio '#{@portfolio.name}' Updated!"
+      flash[:success] = "'#{@portfolio.name}' Updated!"
       redirect_to @portfolio
     else
       flash.now[:alert] = "Portfolio not updated!"
@@ -41,6 +41,13 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
+    @portfolio = Portfolio.find(params[:id])
+    if @portfolio.destroy
+      flash[:success] = "'#{@portfolio.name}' Deleted!"
+    else
+      flash[:alert] = "Portfolio not deleted!"
+    end
+    redirect_to portfolios_path
   end
 
 

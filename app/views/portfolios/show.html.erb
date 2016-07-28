@@ -1,5 +1,6 @@
 <h1><%= @portfolio.name %></h1>
-
+<h3>$<%= @portfolio.total_value%></h3>
+<br>
 <%= render partial: 'stocks/stock', collection: @portfolio.stocks %>
-
+<br>
 <%= link_to "add stock", edit_portfolio_path %>

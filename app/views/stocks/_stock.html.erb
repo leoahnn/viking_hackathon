@@ -1,10 +1,13 @@
-<div>
+<div class="stock-display">
   <h4><%= stock.name %></h4>
-  <span>Symbol:<%= stock.symbol %></span>
-  <span>Amount:<%= stock.amount %></span>
+  <span>Symbol: <%= stock.symbol %></span>
+  <span>Amount: <%= stock.amount %></span>
+  <span>Price: $<%= stock.price %></span>
   <br>
-  <span>Price:<%= stock.price %></span>
-  <span>Change:<%= stock.change %></span>
-  <span>High:<%= stock.high %></span>
-  <span>Low:<%= stock.low %></span>
+  <span>Net Value: $<%= stock.amount*stock.price %></span>
+  <span>Change: <%= stock.change %>%</span>
+  <span>High: <%= stock.high %></span>
+  <span>Low: <%= stock.low %></span>
+  <br>
+  <%= link_to "delete", portfolio_stock_path(portfolio_id: stock[:portfolio_id], id: stock[:id]), method: :delete%>
 </div>
