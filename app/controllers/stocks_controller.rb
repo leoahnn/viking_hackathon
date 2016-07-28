@@ -13,7 +13,7 @@ class StocksController < ApplicationController
       if sapi.check_stock?
         @stock = Stock.new(merged_params(sapi.stock_params))
         @stock.portfolio_id = params[:portfolio_id]
-        @stock.save ? flash[:success] = "#{@stock.name} added!" : flash[:alert] = "Stock not added!"
+        @stock.save ? flash[:success] = "#{@stock.name} added!" : flash[:alert] = "Invalid Input!"
         redirect_to portfolio_path(params[:portfolio_id])
       else
         flash[:alert] = "Stock not found!"
@@ -28,9 +28,15 @@ class StocksController < ApplicationController
   end
 
   def update
-    stock = Stock.find(params[:id])
-    stock.update(amount: params[:stock][:amount])
-    redirect_to portfolio_path(stock[:portfolio_id])
+    @stock = Stock.find(params[:id])
+    if @stock.update(amount: params[:stock][:amount])
+      flash[:success] = "#{@stock.name} added!"
+      redirect_to portfolio_path(@stock[:portfolio_id])
+    else
+      @portfolio = Portfolio.find(params[:portfolio_id])
+      flash[:alert] = "Invalid Input!"
+      render :edit
+    end
   end
 
   def destroy

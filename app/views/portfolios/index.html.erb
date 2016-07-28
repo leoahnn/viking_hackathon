@@ -13,4 +13,8 @@
 </ul>
 <% end %>
 
+<%= form_tag({controller: "refreshers", action: "update"}, method: "patch") do%>
+  <%= submit_tag("Refresh All Stocks") %>
+<% end %>
+
 <%= link_to "New Portfolio", new_portfolio_path %>

@@ -4,7 +4,9 @@ class StockRefresher
       sapi = StockApi.new(all_symbols)
       sapi.multi_stock_params.each do |stock|
         current_stocks = Stock.where symbol: stock[:symbol]
-        current_stocks.each { |s| s.update(stock) }
+        current_stocks.each do |s|
+          s.update(stock)
+        end
       end
     end
 
@@ -17,5 +19,5 @@ class StockRefresher
       symbols.uniq
     end
   end
-  
+
 end
